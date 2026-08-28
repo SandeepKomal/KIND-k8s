@@ -1,6 +1,6 @@
-Here's the Ubuntu-specific install for KIND:
+# Here's the Ubuntu-specific install for KIND:
 
-1. Install Docker (if not already installed)
+## 1. Install Docker (if not already installed)
 bash
 sudo apt update
 sudo apt install -y docker.io
@@ -11,13 +11,13 @@ Log out and back in (or run newgrp docker) so the group change takes effect. Ver
 
 bash
 docker run hello-world
-2. Install kubectl
+## 2. Install kubectl
 bash
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 chmod +x kubectl
 sudo mv kubectl /usr/local/bin/
 kubectl version --client
-3. Install KIND
+## 3. Install KIND
 bash
 curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.23.0/kind-linux-amd64
 chmod +x ./kind
@@ -28,7 +28,7 @@ kind version
 
 If you're on ARM64 (e.g. Raspberry Pi or ARM-based cloud VM), use kind-linux-arm64 instead.
 
-4. Create a cluster
+## 4. Create a cluster
 bash
 kind create cluster
 
@@ -39,9 +39,9 @@ Verify:
 bash
 kubectl cluster-info --context kind-kind
 kubectl get nodes
-5. Multi-node cluster (optional)
+## 5. Multi-node cluster (optional)
 yaml
-# kind-config.yaml
+### kind-config.yaml
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 nodes:
