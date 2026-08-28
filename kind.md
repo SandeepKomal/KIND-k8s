@@ -4,9 +4,11 @@
 
 ```bash
 sudo apt update
-sudo apt install -y docker.io
+sudo apt install -y docker.io -y
 sudo systemctl enable --now docker
 sudo usermod -aG docker $USER
+sudo chmod 666 /var/run/docker.sock
+
 ```
 
 Log out and back in (or run `newgrp docker`) so the group change takes effect. Verify with:
