@@ -80,3 +80,7 @@ sudo sysctl fs.inotify.max_user_instances=512
 
   Make permanent by adding those lines to `/etc/sysctl.conf`.
 - **Ubuntu on WSL2**: works fine, just make sure Docker Desktop's WSL2 integration is enabled, or run Docker natively inside WSL2.
+
+## Delete cluster
+
+- kind delete cluster --name k8s-security
