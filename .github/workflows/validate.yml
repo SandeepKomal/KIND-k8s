@@ -1,0 +1,29 @@
+name: Validate Kind Lab
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: azure/setup-kubectl@v4
+        with:
+          version: latest
+      - name: Validate manifests
+        run: |
+          kubectl apply --dry-run=client -f examples/app/
+          kubectl apply --dry-run=client -f examples/security/
+      - name: Validate shell scripts
+        run: bash -n scripts/*.sh
