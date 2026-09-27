@@ -8,6 +8,7 @@ kind: ServiceAccount
 metadata:
   name: demo-reader
   namespace: kind-security
+automountServiceAccountToken: false
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
